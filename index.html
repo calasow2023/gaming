@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Tic Tac Toe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        <header>
+            <h1 class="game-title">TIC TAC TOE</h1>
+            <p class="game-subtitle">Player vs Player</p>
+        </header>
+
+        <div class="status-section">
+            <span class="status-indicator"></span>
+            <span id="status-text">X's Turn</span>
+        </div>
+
+        <div class="scoreboard">
+            <div class="score-card x-score">
+                <span class="score-label">Player X</span>
+                <span id="score-x" class="score-number">0</span>
+            </div>
+            <div class="score-card draw-score">
+                <span class="score-label">Draws</span>
+                <span id="score-draws" class="score-number">0</span>
+            </div>
+            <div class="score-card o-score">
+                <span class="score-label">Player O</span>
+                <span id="score-o" class="score-number">0</span>
+            </div>
+        </div>
+
+        <div class="game-board" id="board">
+            <div class="cell" data-cell-index="0"></div>
+            <div class="cell" data-cell-index="1"></div>
+            <div class="cell" data-cell-index="2"></div>
+            <div class="cell" data-cell-index="3"></div>
+            <div class="cell" data-cell-index="4"></div>
+            <div class="cell" data-cell-index="5"></div>
+            <div class="cell" data-cell-index="6"></div>
+            <div class="cell" data-cell-index="7"></div>
+            <div class="cell" data-cell-index="8"></div>
+        </div>
+
+        <div class="action-buttons">
+            <button id="restart-btn" class="btn btn-primary">Restart Game</button>
+            <button id="reset-score-btn" class="btn btn-secondary">Reset Score</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
