@@ -1,0 +1,254 @@
+/* Hubi 8px grid iyo reset-ka */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0F172A; /* Background-kaaga Figma */
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Floating light effect (Background Glow) */
+body::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
+    top: 10%;
+    left: 15%;
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(244, 114, 182, 0.15) 0%, transparent 70%);
+    bottom: 10%;
+    right: 15%;
+    z-index: -1;
+}
+
+/* Glassmorphism Container */
+.game-container {
+    background: rgba(30, 41, 59, 0.7); /* Secondary background oo glass ah */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 32px;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Header */
+.game-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #38BDF8, #F472B6);
+    
+  
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+}
+
+.game-subtitle {
+    font-size: 0.9rem;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+
+/* Status Section */
+.status-section {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    margin-bottom: 24px;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    background-color: #38BDF8;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #38BDF8;
+    animation: pulse 1.5s infinite alternate;
+}
+
+#status-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Scoreboard */
+.scoreboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.score-card {
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.score-label {
+    font-size: 0.75rem;
+    color: #94A3B8;
+}
+
+.score-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.x-score { border-bottom: 3px solid #38BDF8; }
+.o-score { border-bottom: 3px solid #F472B6; }
+.draw-score { border-bottom: 3px solid #94A3B8; }
+
+/* Game Board Grid */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.cell {
+    aspect-ratio: 1;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* Hover lift effect */
+.cell:not(.x):not(.o):hover {
+    background: rgba(30, 41, 59, 0.8);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* X iyo O neon glow styling */
+.cell.x {
+    color: #38BDF8;
+    text-shadow: 0 0 15px #38BDF8;
+}
+.cell.x::before { content: 'X'; }
+
+.cell.o {
+    color: #F472B6;
+    text-shadow: 0 0 15px #F472B6;
+}
+.cell.o::before { content: 'O'; }
+
+/* Winner cell animation */
+.cell.winner {
+    animation: win-glow 0.5s ease infinite alternate;
+}
+
+/* Buttons */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #38BDF8, #F472B6);
+    color: #FFFFFF;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(244, 114, 182, 0.5);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #FFFFFF;
+}
+
+/* Animations */
+@keyframes pulse {
+    from { opacity: 0.5; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes win-glow {
+    from {
+        background: rgba(30, 41, 59, 0.9);
+        box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+    to {
+        background: rgba(56, 189, 248, 0.2);
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+    }
+}
+
+/* Responsive design - Mobile */
+@media (max-width: 400px) {
+    .game-container {
+        padding: 20px;
+    }
+    .game-title {
+        font-size: 2rem;
+    }
+    .cell {
+        font-size: 1.8rem;
+    }
+}
